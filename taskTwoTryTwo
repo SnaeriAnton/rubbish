@@ -1,0 +1,89 @@
+using System;
+
+namespace taskTwoTryTwo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string text = "aa aa aa aa aa bbb bbb bbb bbb c c c c c c c c c c c c c c c";
+
+            
+            int indexArray;
+            int lengthTextElement;
+            int lengthElement = 0;
+            int lengthElementConst;
+            int frequencyValue;
+            int lengthCycle;
+            string textElement;
+            string[] myTextArray = text.Split(' ');
+
+            for (int i = 0; i < myTextArray.Length; i++)
+            {
+                textElement = myTextArray[i];
+                lengthTextElement = length(textElement);
+                if (lengthElement < lengthTextElement)
+                {
+                    lengthElement = lengthTextElement;
+                    indexArray = i;
+                }
+
+            }
+            lengthElementConst = lengthElement;
+
+            for (int i = 0; i < myTextArray.Length; i++)
+            {
+                textElement = myTextArray[i];
+                lengthTextElement = length(textElement);
+                if (lengthElement == lengthTextElement || i == myTextArray.Length - 1 && lengthElement > 0)
+                {
+                    lengthCycle = lengthElementConst - lengthTextElement;
+                    for (int j = 0; j < lengthCycle; j++)
+                    {
+                        Console.Write("_");
+                    }
+                    if (!(i == myTextArray.Length - 1))
+                    {
+                        Console.Write(myTextArray[i] + " ");
+                        frequencyValue = frequency(myTextArray, i);
+                        for (int k = 0; k < frequencyValue; k++)
+                        {
+                            Console.Write(".");
+                        }
+                        Console.WriteLine();
+                    }
+                    lengthElement--;
+                    i = -1;
+                } 
+            }
+        }
+
+        public static int length(string ElementChar)
+        {
+            char[] charLength = ElementChar.ToCharArray();
+            int LenghtValueChar = charLength.Length; 
+            return LenghtValueChar;
+        }
+
+
+        public static int frequency(string[] arrayWords, int indexElementMyTextArray)
+        {
+
+            float freauencyDot = 10;
+            float countElement = 0;
+            double frequency;
+
+            for (int i = 0; i < arrayWords.Length; i++)
+            {
+                if (arrayWords[indexElementMyTextArray] == arrayWords[i])
+                {
+                    countElement++;
+                }
+            }
+
+            frequency = (countElement/arrayWords.Length) * freauencyDot;
+            frequency = (int)Math.Round(frequency, MidpointRounding.AwayFromZero);
+            return (int)frequency;
+        }
+    }
+}
