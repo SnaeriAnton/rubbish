@@ -1,0 +1,86 @@
+using System;
+using System.Collections.Generic;
+
+namespace experiment
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Datebase> datebases = new List<Datebase>();
+            datebases.Add(new Datebase (new Person("q", "w", "e"), new Car("BMW", 456), new House("Street", 74)));
+            datebases.Add(new Datebase (new Person("a", "s", "d"), new Car("Audy", 123), new House("Town", 85)));
+            datebases.Add(new Datebase (new Person("z", "x", "c"), new Car("Hunday", 789), new House("City", 96)));
+
+            for (int i = 0; i < datebases.Count; i++)
+            {
+                datebases[i].ShowInfo();
+                Console.WriteLine();
+            }
+
+
+        }
+    }
+
+    class Person
+    {
+        public string Name { get; private set; }
+        public string LastName { get; private set; }
+        public string Surname { get; private set; }
+
+        public Person(string name, string lastname, string surname)
+        {
+            Name = name;
+            LastName = lastname;
+            Surname = surname;
+        }
+    }
+
+    class Car
+    {
+        public string Mark { get; private set; }
+        public int Number { get; private set; }
+
+        public Car(string mark, int number)
+        {
+            Mark = mark;
+            Number = number;
+        }
+    }
+
+    class House
+    {
+        public string Adres { get; private set; }
+        public int Number { get; private set; }
+
+        public House(string adres, int number)
+        {
+            Adres = adres;
+            Number = number;
+        }
+    }
+
+    class Datebase
+    {
+        private Person _person;
+        private Car _car;
+        private House _house;
+        public Datebase(Person person, Car car, House house)
+        {
+            _person = person;
+            _car = car;
+            _house = house;
+        }
+
+        public void ShowInfo()
+        {
+            Console.WriteLine($"Имя: {_person.Name}\n" +
+                $"Фамилия: {_person.LastName}\n" +
+                $"Отчество: {_person.Surname}\n" +
+                $"\tМарка: {_car.Mark}\n" +
+                $"\tНомер: {_car.Number}\n" +
+                $"\t\tАдрес: {_house.Adres}\n" +
+                $"\t\tНомер: {_house.Number}");
+        }
+    }
+}
