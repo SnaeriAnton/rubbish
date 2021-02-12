@@ -1,14 +1,14 @@
 class Soldier
     {
-        public int Health { get; private set; }
-        public int Damage { get; private set; }
-        public int Armor { get; private set; }
-
         private static Random _random = new Random();
         private bool _weapon;
         private int _cartridges;
         private bool _captainAmerica; //super Soldier
         private bool _medic;
+
+        public int Health { get; private set; }
+        public int Damage { get; private set; }
+        public int Armor { get; private set; }
 
         public Soldier()
         {
