@@ -1,0 +1,25 @@
+class Soldier
+    {
+        public int Health { get; private set; }
+        public int Damage { get; private set; }
+        public int Armor { get; private set; }
+
+        private static Random _random = new Random();
+        private bool _weapon;
+        private int _cartridges;
+        private bool _captainAmerica; //super Soldier
+        private bool _medic;
+
+        public Soldier()
+        {
+            int gain;
+            _captainAmerica = _random.Next(0, 100) == 1 ? true : false;
+            gain = _captainAmerica == true ? 4 : 1;
+            Health = _random.Next(10, 101) * gain;
+            Damage = _random.Next(1, 40) * gain;
+            Armor = _random.Next(0, 80) * gain;
+            _weapon = _random.Next(0, 3) == 1 && _captainAmerica == false ? true : false;
+            _cartridges = _weapon == true ? _random.Next(1, 30) : 0;
+            _medic = _random.Next(0, 3) == 1 && _captainAmerica == false && _weapon == false ? true : false;
+        }
+    }
