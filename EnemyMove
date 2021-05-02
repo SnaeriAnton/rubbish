@@ -1,0 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyMove : MonoBehaviour
+{
+    [SerializeField] private Transform _onePoint;
+    [SerializeField] private Transform _twoPoint;
+    [SerializeField] private GameObject _gameObject;
+    [SerializeField] private float _speed;
+
+    private void FixedUpdate()
+    {
+        _gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.Lerp(_onePoint.position, _twoPoint.position, Time.deltaTime * _speed);
+        //_gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.Lerp(_twoPoint.position, _onePoint.position, Time.deltaTime * _speed);
+    }
+}
