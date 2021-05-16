@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Yyyt : MonoBehaviour
+{
+    [SerializeField] private Slider _slider;
+    [SerializeField] private int _maxValue;
+    [SerializeField] private int _minValue;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _target;
+    [SerializeField] private float _current;
+
+    private void Start()
+    {
+        _slider.maxValue = _maxValue;
+        _slider.minValue = _minValue;
+    }
+
+
+    void Update()
+    {
+        _slider.value -= Mathf.MoveTowards(_current, _target, _speed);
+    }
