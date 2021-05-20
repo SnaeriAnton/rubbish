@@ -1,0 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class PlayerHealth : MonoBehaviour
+{
+    [SerializeField] private Slider _slider;
+
+    private float _speed;
+    private int _maxValue = 100;
+    private int _minValue = 0;
+    private float _target;
+    private int _valueHealth;
+
+    private void Start()
+    {
+        _slider.maxValue = _maxValue;
+        _slider.minValue = _minValue;
+        _valueHealth = 10;
+        _speed = 0.1f;
+    }
+
+    private void Update()
+    {
+        ChangeHealth();
+    }
+
+    public void Treat()
+    {
+        _target = _slider.value + _valueHealth;
+    }
+    public void Damage()
+    {
+        _target = _slider.value - _valueHealth;
+    }
+
+    private void ChangeHealth()
+    {
+        _slider.value = Mathf.MoveTowards(_slider.value, _target, _speed);
+    }
+}
